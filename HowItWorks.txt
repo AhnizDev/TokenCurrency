@@ -1,0 +1,49 @@
+===========================================================
+                DAHNIZTOKEN - COMMENT ÇA MARCHE ?
+===========================================================
+
+DahnizToken est une simulation d'écosystème blockchain développée 
+par AhniZTech (Mr. Hanifi Khelaf). Voici le fonctionnement :
+
+1. ARCHITECTURE DES FICHIERS
+----------------------------
+Le projet repose sur 5 fichiers principaux :
+- db.php     : Connexion à la base de données u866442872_MyDatabase.
+- auth.php   : Gestion des inscriptions et des connexions sécurisées.
+- index.php  : Tableau de bord (Dashboard) interactif.
+- logout.php : Déconnexion sécurisée des utilisateurs.
+- style.css  : Design visuel unifié (Header, Footer, Sections).
+
+2. IDENTITÉ (PRINCIPAL ID)
+--------------------------
+Chaque utilisateur reçoit lors de son inscription un "Principal ID" 
+unique généré aléatoirement (ex: xxxxx-xxxxx-xxxxx-xxxxx-xxxxx).
+Cet ID sert d'adresse publique pour recevoir des tokens.
+
+3. LE FAUCET (ROBINET)
+----------------------
+- L'utilisateur peut réclamer 10 000 DAHNIZ gratuitement.
+- Une vérification est faite en base de données (colonne has_claimed_faucet) 
+  pour s'assurer que chaque utilisateur ne l'utilise qu'UNE SEULE fois.
+
+4. SYSTÈME DE TRANSFERT
+-----------------------
+- Les transferts se font de Principal ID à Principal ID.
+- Sécurité : Le système vérifie que le solde est suffisant avant de 
+  valider l'envoi.
+- Atomicité : Le montant est retiré de l'envoyeur et ajouté au 
+  receveur instantanément via des requêtes SQL UPDATE.
+
+5. HISTORIQUE DES TRANSACTIONS
+------------------------------
+Chaque mouvement (Faucet ou Transfert) est enregistré dans la table 
+'transactions_dahniztoken'. 
+Cela permet d'afficher les 5 dernières actions sur le dashboard.
+
+6. CRÉDITS
+----------
+Développé par : Mr. Hanifi Khelaf
+Entreprise    : AhniZTech
+Site Web      : https://khelaf-hanifi.com/
+Copyright     : 2000-2026 ®
+===========================================================
